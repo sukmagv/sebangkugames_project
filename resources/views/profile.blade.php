@@ -68,13 +68,19 @@
                   <td class="border px-4 py-2">{{ $u->name }}</td>
                   <td class="border px-4 py-2">{{ $u->no }}</td>
                   <td class="border px-4 py-2">{{ $u->email }}</td>
-                  <td class="border px-4 py-2">{{ $u->status }}</td>
+                  <td class="border px-4 py-2">
+                    @if ($u->status == 1)
+                        Aktif
+                    @else
+                        Tidak Aktif
+                    @endif
+                  </td>
                   <td class="border px-4 py-2">
                     @if ($u->status != 1)
                       <form method="POST" action="{{ route('approve', $u) }}">
                         @csrf
                         @method('PUT')
-                        <button type="submit">Approve</button>
+                        <button type="submit" class="bg-gradient-to-tl from-purple-700 to-pink-500">Approve</button>
                       </form>
                     @endif
                   </td>

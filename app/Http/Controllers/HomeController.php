@@ -14,9 +14,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $makeup = Makeup::all();
-        // $path = $request->file('image')->store('images', 'images');
-
+        $makeup = Makeup::all()->where('status', 1);
         return view("home", compact("makeup"));
     }
 
